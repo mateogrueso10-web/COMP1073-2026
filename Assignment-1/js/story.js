@@ -60,3 +60,20 @@ storyBtn.addEventListener("click", () => {
     const story = `The ${animals[animalIndex]} ${actions[actionIndex]} in the ${places[placeIndex]} with a ${objects[objectIndex]} ${endings[endingIndex]}.`;
     storyOutput.textContent = story;
 });
+
+// reset button
+const resetBtn = document.getElementById("resetBtn");
+resetBtn.addEventListener("click", () => {
+    animalIndex = 0;
+    actionIndex = 0;
+    placeIndex = 0;
+    objectIndex = 0;
+    endingIndex = 0;
+
+    btn1.textContent = animals[animalIndex];
+    btn2.textContent = actions[actionIndex];
+    btn3.textContent = places[placeIndex];
+    btn4.textContent = objects[objectIndex];
+    btn5.textContent = endings[endingIndex];
+    storyOutput.textContent = "";
+});

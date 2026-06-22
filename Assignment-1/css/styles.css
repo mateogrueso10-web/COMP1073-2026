@@ -39,6 +39,13 @@ button:hover {
     background-color: #1976d2;
 }
 
+.reset-btn {
+    background-color: #f44336;
+}
+.reset-btn:hover {
+    background-color: #d32f2f;
+}
+
 #story {
     margin-top: 25px;
     font-size: 24px;
