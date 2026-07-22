@@ -4,6 +4,50 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Assignment 2</title>
+    <title>Pizza Place</title>
     <link rel="stylesheet" href="style.css">
-    
+
+    <!-- javascript -->
+    <script src="script.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>Pizza order</h1>
+
+        <!-- student info added to javascript -->
+         <p id="studentInfo"></p>
+         <form id="pizzaForm"></form>
+
+         <label>Name</label>
+         <input type="text" id="name" name="name" required>
+
+         <label>Pizza size</label>
+         <select id="pizzaSize" name="pizzaSize" required>
+             <option value="">Select a size</option>
+             <option value="small">Small</option>
+             <option value="medium">Medium</option>
+             <option value="large">Large</option>
+         </select>
+
+         <label>Quantity</label>
+         <input type="number" id="quantity" name="quantity" min="1" required>
+
+         <label>Crust Type</label>
+         <select id="crustType" name="crustType" required>
+             <option value="">Select a crust type</option>
+             <option value="thin">Thin</option>
+             <option value="regular">Regular</option>
+             <option value="stuffed">Stuffed</option>
+         </select>
+
+         <label>Sauce</label>
+         <select id="sauce" name="sauce" required>
+             <option value="">Select a sauce</option>
+             <option value="tomato">Tomato</option>
+             <option value="alfredo">Alfredo</option>
+             <option value="pesto">Pesto</option>
+         </select>
+
+         <button type="submit">Order Pizza</button>
+    </div>
+</body>
