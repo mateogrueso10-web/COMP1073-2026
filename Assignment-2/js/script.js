@@ -16,5 +16,16 @@ class Pizza {
 
     // returns a description of the pizza order
     getDescription() {
-        return `${this.quantity} ${this.size} ${this.name} pizza(s) with ${this.crust} crust, ${this.sauce} sauce, ${this.extraCheese ? "extra cheese" : "no extra cheese"}, and special instructions: "${this.instructions}".`;
+        return `
+            <h2>Order Summary</h2>
+            <p><strong>Customer:</strong> ${this.name}</p>
+            <p><strong>Quantity:</strong> ${this.quantity}</p>
+            <p><strong>Pizza Size:</strong> ${this.size}</p>
+            <p><strong>Crust:</strong> ${this.crust}</p>
+            <p><strong>Sauce:</strong> ${this.sauce}</p>
+            <p><strong>Special Instructions:</strong> ${this.instructions || "None"}</p>
+            
+        `;
     }
+
+}
