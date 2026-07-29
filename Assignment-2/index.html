@@ -5,10 +5,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pizza Place</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/style.css">
 
     <!-- javascript -->
-    <script src="script.js"></script>
+    <script src="js/script.js" defer></script>
 </head>
 <body>
     <div class="container">
@@ -16,7 +16,7 @@
 
         <!-- student info added to javascript -->
          <p id="studentInfo"></p>
-         <form id="pizzaForm"></form>
+         <form id="pizzaForm">
 
          <label>Name</label>
          <input type="text" id="name" name="name" required>
@@ -48,6 +48,46 @@
              <option value="pesto">Pesto</option>
          </select>
 
+         <label>Toppings</label>
+         <div class="toppings">
+            <label>
+                <input type="checkbox" name="toppings" value="Pepperoni">
+                Pepperoni
+            </label>
+
+            <label>
+                <input type="checkbox" name="toppings" value="Bacon">
+                Bacon
+            </label>
+
+            <label>
+                <input type="checkbox" name="toppings" value="Mushrooms">
+                Mushrooms
+            </label>
+
+            <label>
+                <input type="checkbox" name="toppings" value="Onions">
+                Onions
+            </label>
+
+            <label>
+                <input type="checkbox" name="toppings" value="Green Peppers">
+                Green Peppers
+            </label>
+        </div>
+
+
+         <label>
+            <input type="checkbox" id="extraCheese">
+            Extra Cheese
+        </label>
+
+        <label>Special Instructions</label>
+        <textarea id="instructions" name="instructions"></textarea>
+
          <button type="submit">Order Pizza</button>
+         </form>
+
+         <div id="orderSummary"></div>
     </div>
 </body>
