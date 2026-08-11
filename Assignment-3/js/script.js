@@ -62,3 +62,83 @@ searchButton.addEventListener("click", getPictureByDate);
 
 // Run getRandomPictures() when Random Space Images is clicked.
 randomButton.addEventListener("click", getRandomPictures);
+
+/* Fetch Picture by Date  */
+
+async function getRandomPictures() {
+
+    // Show loading message.
+    showLoading();
+
+
+    // Clear existing gallery.
+    gallery.innerHTML = "";
+
+
+    try {
+
+        // Request 6 random NASA images.
+        const url =
+            `${API_URL}?api_key=${API_KEY}&count=6&thumbs=true`;
+
+
+        // Send request to NASA.
+        const response =
+            await fetch(url);
+
+
+        // Check if request was successful.
+        if (!response.ok) {
+
+            throw new Error(
+                `NASA API returned status ${response.status}`
+            );
+
+        }
+
+
+        // Convert response to JavaScript.
+        const data =
+            await response.json();
+
+
+        // Add each NASA image to the gallery.
+        data.forEach(
+            createGalleryCard
+        );
+
+
+        // Display the first random image
+        // as the featured discovery.
+        if (data.length > 0) {
+
+            displayFeatured(
+                data[0]
+            );
+
+        }
+
+    }
+
+    catch (error) {
+
+        console.error(
+            "API Error:",
+            error
+        );
+
+
+        showError(
+            "Unable to load random NASA images. Please check your API key."
+        );
+
+    }
+
+    finally {
+
+        // Hide loading message.
+        hideLoading();
+
+    }
+}
+
