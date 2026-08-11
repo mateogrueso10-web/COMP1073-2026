@@ -1,10 +1,13 @@
-/* 
-   NASA SPACE EXPLORER
-   JavaScript
-   NASA Astronomy Picture of the Day API
- */
+/*
+    NASA SPACE EXPLORER
+    JavaScript
+    NASA Astronomy Picture of the Day API
+*/
 
-/*  API Settings  */
+
+/* 
+   API SETTINGS
+ */
 
 // Replace this with your NASA API key.
 const API_KEY = "MbgEtRt2bLJvcMWln7WiJbjl1EzI1HHkV1qMKjax";
@@ -12,16 +15,23 @@ const API_KEY = "MbgEtRt2bLJvcMWln7WiJbjl1EzI1HHkV1qMKjax";
 // NASA APOD API URL.
 const API_URL = "https://api.nasa.gov/planetary/apod";
 
-/*  Student Information  */
+
+/* 
+   STUDENT INFORMATION
+ */
 
 // Find the paragraph from the HTML.
-const studentInfo = document.getElementById("studentInfo");
+const studentInfo =
+    document.getElementById("studentInfo");
 
 // Add student information dynamically using JavaScript.
 studentInfo.textContent =
     "Student: Mateo Grueso | Student ID: 200655020";
 
-/*  Get HTML Elements  */
+
+/* 
+   GET HTML ELEMENTS
+ */
 
 const datePicker =
     document.getElementById("datePicker");
@@ -44,10 +54,14 @@ const featuredContainer =
 const gallery =
     document.getElementById("gallery");
 
-/*  Set Today's Date  */
+
+/* 
+   SET TODAY'S DATE
+ */
 
 // Get today's date.
-const today = new Date().toISOString().split("T")[0];
+const today =
+    new Date().toISOString().split("T")[0];
 
 // Prevent the user from selecting a future date.
 datePicker.max = today;
@@ -55,15 +69,107 @@ datePicker.max = today;
 // Set today's date as the default.
 datePicker.value = today;
 
-/*  Event Listeners  */
+
+/*
+   EVENT LISTENERS
+*/
 
 // Run getPictureByDate() when Explore is clicked.
 searchButton.addEventListener("click", getPictureByDate);
 
+
 // Run getRandomPictures() when Random Space Images is clicked.
 randomButton.addEventListener("click", getRandomPictures);
 
-/* Fetch Picture by Date  */
+
+/* 
+   GET APOD BY DATE
+*/
+
+async function getPictureByDate() {
+
+    // Get the date selected by the user.
+    const selectedDate =
+        datePicker.value;
+
+
+    // Make sure a date was selected.
+    if (!selectedDate) {
+
+        showError(
+            "Please select a date first."
+        );
+
+        return;
+    }
+
+
+    // Show loading message.
+    showLoading();
+
+
+    // Clear the gallery.
+    gallery.innerHTML = "";
+
+
+    try {
+
+        // Create the NASA API request URL.
+        const url =
+            `${API_URL}?api_key=${API_KEY}&date=${selectedDate}&thumbs=true`;
+
+
+        // Send request to NASA.
+        const response =
+            await fetch(url);
+
+
+        // Check if request was successful.
+        if (!response.ok) {
+
+            throw new Error(
+                `NASA API returned status ${response.status}`
+            );
+
+        }
+
+
+        // Convert the response to JavaScript data.
+        const data =
+            await response.json();
+
+
+        // Display the NASA information.
+        displayFeatured(data);
+
+    }
+
+    catch (error) {
+
+        console.error(
+            "API Error:",
+            error
+        );
+
+
+        showError(
+            "Unable to load NASA data. Please check your API key and try again."
+        );
+
+    }
+
+    finally {
+
+        // Hide loading message.
+        hideLoading();
+
+    }
+}
+
+
+/* 
+   GET RANDOM APOD IMAGES
+*/
 
 async function getRandomPictures() {
 
@@ -77,7 +183,7 @@ async function getRandomPictures() {
 
     try {
 
-        // Request 6 random NASA images.
+        // Request six random NASA images.
         const url =
             `${API_URL}?api_key=${API_KEY}&count=6&thumbs=true`;
 
@@ -142,10 +248,17 @@ async function getRandomPictures() {
     }
 }
 
-/* Display featured NASA Image  */
+
+/* 
+   DISPLAY FEATURED NASA IMAGE
+*/
+
 function displayFeatured(data) {
 
     let mediaHTML = "";
+
+
+    // NASA APOD can return either an image or a video.
 
     if (data.media_type === "image") {
 
@@ -172,6 +285,7 @@ function displayFeatured(data) {
 
     }
 
+
     // Create the featured card.
     featuredContainer.innerHTML = `
 
@@ -191,25 +305,34 @@ function displayFeatured(data) {
                 ${escapeHTML(data.explanation)}
             </p>
 
-            ${
-                data.copyright
-                    ? `
+            ${data.copyright
+            ? `
                         <p class="copyright">
                             Copyright:
                             ${escapeHTML(data.copyright)}
                         </p>
-                      `
-                    : ""
-            }
+                    `
+            : ""
+        }
 
         </div>
 
     `;
 }
 
-/* Create a gallery card for each NASA image  */
+
+/* 
+   CREATE GALLERY CARD
+*/
+
 function createGalleryCard(data) {
-    
+
+    /*
+        Images use data.url.
+
+        Videos may provide a thumbnail_url.
+    */
+
     const imageURL =
         data.media_type === "image"
             ? data.url
@@ -223,12 +346,13 @@ function createGalleryCard(data) {
 
     }
 
-     // Create an article element.
+
+    // Create an article element.
     const card =
         document.createElement("article");
 
 
-    // Add the CSS class.
+    // Add CSS class.
     card.className =
         "gallery-card";
 
@@ -257,6 +381,7 @@ function createGalleryCard(data) {
 
     `;
 
+
     /*
         When the user clicks a gallery image,
         display that image as the featured image.
@@ -277,13 +402,15 @@ function createGalleryCard(data) {
         }
     );
 
+
     // Add the card to the gallery.
     gallery.appendChild(card);
 }
 
-/*
+
+/* 
    LOADING FUNCTIONS
-*/
+ */
 
 function showLoading() {
 
@@ -311,7 +438,7 @@ function hideLoading() {
 
 /* 
    ERROR FUNCTION
-*/
+ */
 
 function showError(message) {
 
@@ -324,13 +451,12 @@ function showError(message) {
     errorMessage.classList.remove(
         "hidden"
     );
-
 }
 
 
 /* 
    HTML ESCAPING
-*/
+ */
 
 /*
     This function protects the page from
@@ -352,7 +478,4 @@ function escapeHTML(text) {
         .replaceAll(">", "&gt;")
         .replaceAll('"', "&quot;")
         .replaceAll("'", "&#039;");
-
 }
-
-
