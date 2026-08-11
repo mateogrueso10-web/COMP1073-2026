@@ -17,7 +17,132 @@
 
 <body>
     <!-- Header -->
-    <header>
-        <h1>NASA Space Explorer</h1>
+        <header class="hero">
+
+        <div class="hero-content">
+
+            <p id="studentInfo"></p>
+
+            <h1>NASA Space Explorer</h1>
+
+            <p class="subtitle">
+                Explore NASA's Astronomy Picture of the Day
+            </p>
+
+        </div>
+
+    </header>
+
+    <main>
+        <!-- Search Controls -->
+        <section class="controls-section">
+
+            <h2>Explore Space</h2>
+
+            <p>
+                Select a date to discover NASA's featured astronomy image.
+            </p>
+
+            <div class="controls">
+                <label for="datePicker">
+                    Choose a date:
+                </label>
+
+                <input
+                    type="date"
+                    id="datePicker"
+                >
+
+                <button id="searchButton">
+                    Explore
+                </button>
+
+                <button id="randomButton">
+                    Random Space Images
+                </button>
+
+            </div>
+
+        </section>
+
+        <!-- loading message -->
+          <p id="loading" class="loading hidden">
+            Loading NASA data...
+        </p>
+
+        <!-- Error message -->
+        <p id="errorMessage" class="error hidden">
+            Sorry, we couldn't retrieve the data. Please try again later.
+        </p>
+
+        <!-- Featured APOD-->
+          <section class="featured-section">
+
+            <h2>Featured Discovery</h2>
+
+            <div id="featuredContainer" class="featured-card">
+
+                <div class="placeholder">
+
+                    <h3>Welcome, Space Explorer!</h3>
+
+                    <p>
+                        Select a date or load random images to begin exploring.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- Random gallery -->
+          <section class="gallery-section">
+
+            <h2>More From NASA</h2>
+
+            <div
+                id="gallery"
+                class="gallery"
+            >
+            </div>
+
+        </section>
+
+        <!-- API Documentation -->
+          <section class="documentation">
+
+            <h2>API Documentation</h2>
+
+            <p>
+                This project uses NASA's Astronomy Picture of the Day API.
+            </p>
+
+            <a
+                href="https://api.nasa.gov/"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                View NASA API Documentation
+            </a>
+
+            </section>
+
+    </main>
+
+     <!-- Footer -->
+    <footer>
+
+        <p>
+            NASA Space Explorer | Created using the NASA APOD API
+        </p>
+
+    </footer>
 
 </body>
+
+</html>
+
+
+
+
