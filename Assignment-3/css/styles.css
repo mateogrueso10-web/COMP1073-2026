@@ -46,3 +46,149 @@ background:
     max-width: 900px;
 }
 
+/* Student Information */
+
+#studentInfo {
+    color: #93c5fd;
+
+    font-size: 0.95rem;
+
+    margin-bottom: 15px;
+}
+
+
+/*  Main Heading  */
+
+.hero h1 {
+    font-size: clamp(2.5rem, 7vw, 5rem);
+
+    letter-spacing: 3px;
+
+    margin-bottom: 10px;
+
+    text-shadow:
+        0 4px 15px rgba(0, 0, 0, 0.7);
+}
+
+
+/*  Subtitle  */
+
+.subtitle {
+    font-size: 1.2rem;
+
+    color: #cbd5e1;
+}
+
+/*  Main Content  */
+
+main {
+    width: min(1200px, 92%);
+
+    margin: 0 auto;
+
+    padding: 50px 0;
+}
+
+
+section {
+    margin-bottom: 60px;
+}
+
+
+h2 {
+    font-size: 2rem;
+
+    margin-bottom: 15px;
+}
+
+
+/*  Controls Section  */
+
+.controls-section {
+    text-align: center;
+
+    background: rgba(15, 23, 42, 0.85);
+
+    padding: 30px;
+
+    border-radius: 15px;
+
+    border: 1px solid rgba(148, 163, 184, 0.2);
+
+    box-shadow:
+        0 10px 30px rgba(0, 0, 0, 0.25);
+}
+
+
+.controls {
+    display: flex;
+
+    flex-wrap: wrap;
+
+    justify-content: center;
+
+    align-items: center;
+
+    gap: 12px;
+
+    margin-top: 25px;
+}
+
+
+/*  Date Input  */
+
+input[type="date"] {
+    padding: 12px 15px;
+
+    border-radius: 8px;
+
+    border: none;
+
+    font-size: 1rem;
+
+    background: white;
+
+    color: #0f172a;
+
+    cursor: pointer;
+}
+
+
+/*  Buttons  */
+
+button {
+    padding: 12px 20px;
+
+    border: none;
+
+    border-radius: 8px;
+
+    background: #2563eb;
+
+    color: white;
+
+    font-size: 1rem;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.2s ease,
+        background 0.2s ease;
+}
+
+button:hover {
+    background: #1d4ed8;
+
+    transform: translateY(-2px);
+}
+
+#randomButton {
+    background: #7c3aed;
+}
+
+
+#randomButton:hover {
+    background: #6d28d9;
+}
