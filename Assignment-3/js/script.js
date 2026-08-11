@@ -281,5 +281,78 @@ function createGalleryCard(data) {
     gallery.appendChild(card);
 }
 
+/*
+   LOADING FUNCTIONS
+*/
+
+function showLoading() {
+
+    // Show loading message.
+    loading.classList.remove(
+        "hidden"
+    );
+
+
+    // Hide previous error.
+    errorMessage.classList.add(
+        "hidden"
+    );
+}
+
+
+function hideLoading() {
+
+    // Hide loading message.
+    loading.classList.add(
+        "hidden"
+    );
+}
+
+
+/* 
+   ERROR FUNCTION
+*/
+
+function showError(message) {
+
+    // Put the error message into the paragraph.
+    errorMessage.textContent =
+        message;
+
+
+    // Show the error message.
+    errorMessage.classList.remove(
+        "hidden"
+    );
+
+}
+
+
+/* 
+   HTML ESCAPING
+*/
+
+/*
+    This function protects the page from
+    HTML being inserted through API data.
+*/
+
+function escapeHTML(text) {
+
+    if (!text) {
+
+        return "";
+
+    }
+
+
+    return text
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#039;");
+
+}
 
 
