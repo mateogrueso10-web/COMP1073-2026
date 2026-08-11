@@ -43,3 +43,22 @@ const featuredContainer =
 
 const gallery =
     document.getElementById("gallery");
+
+/*  Set Today's Date  */
+
+// Get today's date.
+const today = new Date().toISOString().split("T")[0];
+
+// Prevent the user from selecting a future date.
+datePicker.max = today;
+
+// Set today's date as the default.
+datePicker.value = today;
+
+/*  Event Listeners  */
+
+// Run getPictureByDate() when Explore is clicked.
+searchButton.addEventListener("click", getPictureByDate);
+
+// Run getRandomPictures() when Random Space Images is clicked.
+randomButton.addEventListener("click", getRandomPictures);
