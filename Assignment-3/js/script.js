@@ -142,3 +142,71 @@ async function getRandomPictures() {
     }
 }
 
+/* Display featured NASA Image  */
+function displayFeatured(data) {
+
+    let mediaHTML = "";
+
+    if (data.media_type === "image") {
+
+        mediaHTML = `
+            <img
+                src="${data.url}"
+                alt="${escapeHTML(data.title)}"
+                class="featured-media"
+            >
+        `;
+
+    }
+
+    else if (data.media_type === "video") {
+
+        mediaHTML = `
+            <iframe
+                class="featured-media"
+                src="${data.url}"
+                title="${escapeHTML(data.title)}"
+                allowfullscreen>
+            </iframe>
+        `;
+
+    }
+
+    // Create the featured card.
+    featuredContainer.innerHTML = `
+
+        ${mediaHTML}
+
+        <div class="featured-info">
+
+            <h3>
+                ${escapeHTML(data.title)}
+            </h3>
+
+            <p class="date">
+                ${escapeHTML(data.date)}
+            </p>
+
+            <p class="explanation">
+                ${escapeHTML(data.explanation)}
+            </p>
+
+            ${
+                data.copyright
+                    ? `
+                        <p class="copyright">
+                            Copyright:
+                            ${escapeHTML(data.copyright)}
+                        </p>
+                      `
+                    : ""
+            }
+
+        </div>
+
+    `;
+}
+
+/* Create a gallery card for each NASA image  */
+
+
