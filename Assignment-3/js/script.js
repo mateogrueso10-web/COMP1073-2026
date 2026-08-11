@@ -208,5 +208,78 @@ function displayFeatured(data) {
 }
 
 /* Create a gallery card for each NASA image  */
+function createGalleryCard(data) {
+    
+    const imageURL =
+        data.media_type === "image"
+            ? data.url
+            : data.thumbnail_url;
+
+
+    // If there is no image, don't create a card.
+    if (!imageURL) {
+
+        return;
+
+    }
+
+     // Create an article element.
+    const card =
+        document.createElement("article");
+
+
+    // Add the CSS class.
+    card.className =
+        "gallery-card";
+
+
+    // Create the gallery card HTML.
+    card.innerHTML = `
+
+        <img
+            src="${imageURL}"
+            alt="${escapeHTML(data.title)}"
+            class="gallery-image"
+            loading="lazy"
+        >
+
+        <div class="gallery-info">
+
+            <h3>
+                ${escapeHTML(data.title)}
+            </h3>
+
+            <p>
+                ${escapeHTML(data.date)}
+            </p>
+
+        </div>
+
+    `;
+
+    /*
+        When the user clicks a gallery image,
+        display that image as the featured image.
+    */
+
+    card.addEventListener(
+        "click",
+        function () {
+
+            displayFeatured(data);
+
+
+            // Scroll back to the featured section.
+            featuredContainer.scrollIntoView({
+                behavior: "smooth"
+            });
+
+        }
+    );
+
+    // Add the card to the gallery.
+    gallery.appendChild(card);
+}
+
 
 
