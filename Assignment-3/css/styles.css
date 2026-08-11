@@ -192,3 +192,39 @@ button:hover {
 #randomButton:hover {
     background: #6d28d9;
 }
+
+/* loading message */
+.loading {
+    text-align: center;
+
+    font-size: 1.2rem;
+
+    color: #93c5fd;
+
+    padding: 20px;
+}
+
+/*  Hide Elements  */
+
+.hidden {
+    display: none;
+}
+
+
+/*  Error Message  */
+
+.error {
+    background: rgba(127, 29, 29, 0.9);
+
+    color: #fecaca;
+
+    padding: 15px 20px;
+
+    border-radius: 8px;
+
+    text-align: center;
+
+    margin-bottom: 30px;
+
+    border: 1px solid #ef4444;
+}
